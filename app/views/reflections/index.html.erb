@@ -1,0 +1,22 @@
+<h1 class="text-success">hello world</h1>
+
+<div class="container">
+  <div class="col-sm-12">
+    <canvas id="springydemo" width="800" height="480" />
+  </div>
+</div>
+
+<script>
+  jQuery(function(){
+    var graph = new Springy.Graph();
+    $.getJSON('/reflections/show', function(json){
+      graph.loadJSON(json);
+    });
+    var springy = window.springy = jQuery('#springydemo').springy({
+      graph: graph,
+      nodeSelected: function(node){
+        console.log('Node selected: ' + JSON.stringify(node.data));
+      }
+    });
+  });
+</script>
